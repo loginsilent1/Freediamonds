@@ -106,49 +106,5 @@ input {
   <div class="status" id="status"></div>
 </div>
 
-<script>
-function start() {
-  let link = document.getElementById("link").value;
-
-  if(link === "") {
-    alert("Paste link first!");
-    return;
-  }
-
-  let bar = document.getElementById("bar");
-  let status = document.getElementById("status");
-
-  let width = 0;
-
-  let steps = [
-    "Connecting to server...",
-    "Checking account...",
-    "Generating diamonds...",
-    "Finalizing..."
-  ];
-
-  let i = 0;
-
-  let interval = setInterval(() => {
-    width += 5;
-    bar.style.width = width + "%";
-
-    if(width % 25 === 0 && i < steps.length) {
-      status.innerText = steps[i];
-      i++;
-    }
-
-    if(width >= 100) {
-      clearInterval(interval);
-      status.innerText = "Success! Redirecting...";
-      setTimeout(() => {
-        window.location.href = link;
-      }, 1500);
-    }
-
-  }, 200);
-}
-</script>
-
 </body>
 </html>
